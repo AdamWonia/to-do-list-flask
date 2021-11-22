@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+body {
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,236,192,0.8942927512801996) 0%,
+    rgba(29,98,159,0.9251050762101716) 54%, rgba(8,64,112,1) 100%);
+}
