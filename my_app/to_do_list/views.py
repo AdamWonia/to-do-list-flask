@@ -1,21 +1,6 @@
-from flask import Flask, render_template, url_for, request, redirect
-from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
-
-app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database.db'
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-db = SQLAlchemy(app)
-
-
-class ToDoList(db.Model):
-    id = db.Column(db.Integer, primary_key=True, nullable=False)
-    task_content = db.Column(db.String(200), nullable=False)
-    done = db.Column(db.Boolean, default=False, nullable=False)
-    created = db.Column(db.DateTime, default=datetime.utcnow, nullable=False)
-
-    def __str__(self):
-        return f'Task {self.id}'
+from my_app import app, db
+from my_app.to_do_list.models import ToDoList
+from flask import request, redirect, render_template, url_for
 
 
 @app.route('/tasks', methods=['GET', 'POST'])
@@ -34,7 +19,7 @@ def index():
             return redirect(url_for('index'))
     else:
         tasks = ToDoList.query.order_by(ToDoList.created).all()
-        return render_template('index.html', tasks=tasks)
+        return render_template('to_do_list/index.html', tasks=tasks)
 
 
 @app.route('/tasks/update/<int:id>', methods=['GET', 'POST'])
@@ -48,7 +33,7 @@ def update(id=None):
         except Exception as e:
             return f"Something went wrong when updating the task: {e}"
     else:
-        return render_template('update.html', task=task)
+        return render_template('to_do_list/update.html', task=task)
 
 
 @app.route('/tasks/delete/<int:id>')
@@ -60,8 +45,3 @@ def delete(id=None):
         return redirect(url_for('index'))
     except Exception as e:
         return f"Something went wrong when updating the task: {e}"
-
-
-if __name__ == "__main__":
-    db.create_all()
-    app.run(debug=True)
