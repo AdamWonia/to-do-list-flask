@@ -5,3 +5,120 @@ body {
     background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(71,236,192,0.8942927512801996) 0%,
     rgba(29,98,159,0.9251050762101716) 54%, rgba(8,64,112,1) 100%);
 }
+
+h1 {
+    font-family: 'Lobster', cursive;
+}
+
+.center {
+    text-align: center;
+    margin: 0 auto;
+}
+
+.top-label {
+    font-family: 'Lobster', cursive;
+    font-size: 42px;
+    color: black;
+}
+
+.button {
+    background-color: #303245;
+    border: 1px solid #04cc72;
+    border-radius: 8px;
+    padding: 5px 5px 5px 5px;
+    width: 80px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    color: white;
+    cursor: pointer;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.4s;
+}
+
+.button:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),
+    0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.input-container {
+    height: 100px;
+    position: relative;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.input {
+    background-color: #303245;
+    border-radius: 8px;
+    border: 1px solid black;
+    box-sizing: border-box;
+    color: #bcc2bd;
+    font-size: 18px;
+    height: 30px;
+    outline: 0;
+    padding: 4px 20px 4px 20px;
+    width: 20%;
+}
+
+table {
+    width: 40%;
+}
+
+th {
+    width: 20%;
+    font-family: 'Lobster', cursive;
+    font-size: 25px;
+    color: black;
+}
+
+td {
+    font-weight: bold;
+    width: 15%;
+    //border: 1px solid black;
+    border-radius: 8px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+#done {
+    background-color: #bf0b0b;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    position: relative;
+    text-align: center;
+}
+
+#done:hover {
+    background-color: #750505;
+}
+
+#update {
+    background-color: #001eff;
+    border-radius: 8px;
+    border-style: none;
+    box-sizing: border-box;
+    color: #FFFFFF;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 30px;
+    padding: 5px 10px 5px 10px;
+    position: relative;
+    text-align: center;
+}
+
+#update:hover {
+    background-color: #000e78;
+}
