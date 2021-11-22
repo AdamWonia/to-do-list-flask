@@ -20,8 +20,23 @@ class ToDoList(db.Model):
 
 @app.route('/tasks', methods=['GET', 'POST'])
 def index():
-    return render_template('index.html')
+    if request.method == "POST":
+        task_content = request.form['task_content']
+        if task_content:
+            new_task = ToDoList(task_content=task_content)
+            try:
+                db.session.add(new_task)
+                db.session.commit()
+                return redirect(url_for('index'))
+            except Exception as e:
+                return f"Something went wrong when adding a new task: {e}"
+        else:
+            return redirect(url_for('index'))
+    else:
+        tasks = ToDoList.query.order_by(ToDoList.created).all()
+        return render_template('index.html', tasks=tasks)
 
 
 if __name__ == "__main__":
+    db.create_all()
     app.run(debug=True)
