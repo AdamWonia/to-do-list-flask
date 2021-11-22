@@ -37,6 +37,31 @@ def index():
         return render_template('index.html', tasks=tasks)
 
 
+@app.route('/tasks/update/<int:id>', methods=['GET', 'POST'])
+def update(id=None):
+    task = ToDoList.query.get_or_404(id)
+    if request.method == "POST":
+        task.task_content = request.form['task_content']
+        try:
+            db.session.commit()
+            return redirect(url_for('index'))
+        except Exception as e:
+            return f"Something went wrong when updating the task: {e}"
+    else:
+        return render_template('update.html', task=task)
+
+
+@app.route('/tasks/delete/<int:id>')
+def delete(id=None):
+    task = ToDoList.query.get_or_404(id)
+    try:
+        db.session.delete(task)
+        db.session.commit()
+        return redirect(url_for('index'))
+    except Exception as e:
+        return f"Something went wrong when updating the task: {e}"
+
+
 if __name__ == "__main__":
     db.create_all()
     app.run(debug=True)
