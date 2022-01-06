@@ -4,6 +4,21 @@
 
 This repository contains a to-do list project for a website. It was made in Python using the Flask framework and uses the sqlite database.
 
+## Creating a virtual environment
+
+Open a terminal in your project directory and type the following command:
+
+```bash
+python -m venv venv
+```
+This will create a virtual environment named **venv**. To activate the virtual environment type the following command in your terminal:
+
+```bash
+"venv/scripts/activate.bat"
+```
+
+Next you have to install all required packages.
+
 ## Packages
 
 Use the package manager [pip](https://pip.pypa.io/en/stable/) to install all required packages, which are listed in the **requirements.txt** file. You can use the command below.
